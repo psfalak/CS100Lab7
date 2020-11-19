@@ -9,7 +9,7 @@ TEST(Parse, Operators){
   Base* base = fact.parse(ar, 5);
   std::cout << base->evaluate();
   EXPECT_EQ(2, base->evaluate());
-  EXPECT_EQ("3.000000 + 5.000000 - 6.000000", base->stringify());
+  EXPECT_EQ("3.000000+5.000000-6.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
@@ -20,7 +20,7 @@ TEST(Parse, Mult){
   Base* base = fact.parse(ar, 5);
   std::cout << base->evaluate();
   EXPECT_EQ(48, base->evaluate());
-  EXPECT_EQ("3.000000 + 5.000000 * 6.000000", base->stringify());
+  EXPECT_EQ("3.000000+5.000000*6.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
@@ -31,7 +31,7 @@ TEST(Parse, Pow){
   Base* base = fact.parse(ar, 6);
   std::cout << base->evaluate();
   EXPECT_EQ(3, base->evaluate());
-  EXPECT_EQ("3.000000 ** 2.000000 - 6.000000", base->stringify());
+  EXPECT_EQ("3.000000**2.000000-6.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
@@ -42,7 +42,7 @@ TEST(Parse, PowEnd){
   Base* base = fact.parse(ar, 6);
   std::cout << base->evaluate();
   EXPECT_EQ(4, base->evaluate());
-  EXPECT_EQ("3.000000 + 2.000000 ** 1.000000", base->stringify());
+  EXPECT_EQ("3.000000+1.000000**1.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
@@ -54,7 +54,7 @@ TEST(Parse, ZeroTestPow){
   Base* base = fact.parse(ar, 6);
   std::cout << base->evaluate();
   EXPECT_EQ(1, base->evaluate());
-  EXPECT_EQ("0.000000 + 1.000000 ** 0.000000", base->stringify());
+  EXPECT_EQ("0.000000+1.000000**0.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 
 }
@@ -67,7 +67,7 @@ TEST(Parse, ZeroTestDiv){
   Base* base = fact.parse(ar, 5);
   std::cout << base->evaluate();
   EXPECT_EQ(0, base->evaluate());
-  EXPECT_EQ("0.000000 + 0.000000 / 3.000000", base->stringify());
+  EXPECT_EQ("0.000000+0.000000/3.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
