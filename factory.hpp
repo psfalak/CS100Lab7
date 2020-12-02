@@ -30,12 +30,12 @@ public:
 	Factory(){};
 	Base* parse(char** input, int length){
 	     bool change = false;
-	     int i = 0;    
+	     int i = 0;
      	     operandOne = new Op(*input[0] - '0');
 	     op = *input[1];
 	     operandTwo = new Op(*input[2] - '0');
 	     if(op == '+'){
-                    combination = new Add(operandOne, operandTwo);  
+                    combination = new Add(operandOne, operandTwo);
              }
 
               if(op == '-'){
@@ -48,7 +48,6 @@ public:
 
 	     if(op == '*'){
                    if(*input[2] == '*'){
-              
                        combination = new Pow(operandOne, new Op(*input[3] - '0'));
 		       change = true; 
                    }
@@ -56,7 +55,7 @@ public:
                        combination = new Mult(operandOne, operandTwo);
               }
 	      if(change == true) {i = 1;}
-   //3 * 2 - 6 / 7
+  
              if(length > 3){    
 		for(i = i + 3; i < length; i+=2){
 			   op = *input[i];
