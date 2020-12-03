@@ -33,12 +33,12 @@ TEST(Parse, BasicMult){
 } 
 
 TEST(Parse, BasicDiv){
-  char* ar[3]; ar[0] = "10"; ar[1] = "/"; ar[2] = "5";
+  char* ar[3]; ar[0] = "5"; ar[1] = "/"; ar[2] = "5";
   Factory fact = Factory();
   Base* base = fact.parse(ar, 3);
   std::cout << base->evaluate();
-  EXPECT_EQ(2, base->evaluate());
-  EXPECT_EQ("10.000000/5.000000", base->stringify());
+  EXPECT_EQ(1, base->evaluate());
+  EXPECT_EQ("5.000000/5.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 } 
 
@@ -57,28 +57,31 @@ TEST(Parse, ErrorTest1){
   Factory fact = Factory();
   Base* base = fact.parse(ar, 3);
   std::cout << base->evaluate();
-  EXPECT_EQ(102, base->evaluate());
-  EXPECT_EQ("a+5.000000", base->stringify());
+  EXPECT_EQ(true ,isdigit(base->evaluate()));
+  EXPECT_EQ("49.000000+5.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 
 TEST(Parse, ErrorTest2){
   char* ar[3]; ar[0] = "5"; ar[1] = "+"; ar[2] = "a";
   Factory fact = Factory();
+  
   Base* base = fact.parse(ar, 3);
   std::cout << base->evaluate();
-  EXPECT_EQ(102, base->evaluate());
-  EXPECT_EQ("5.000000+a", base->stringify());
+  EXPECT_EQ(true ,isdigit(base->evaluate()));
+  EXPECT_EQ("5.000000+49.000000", base->stringify());
   ASSERT_NE(base, nullptr);
+ 
 }
 
-TEST(Parse, ErrorTest2){
-  char* ar[3]; ar[0] = "100"; ar[1] = "-"; ar[2] = "a";
+TEST(Parse, ErrorTest3){
+  char* ar[3]; ar[0] = "5"; ar[1] = "+"; ar[2] = "b";
   Factory fact = Factory();
+
   Base* base = fact.parse(ar, 3);
   std::cout << base->evaluate();
-  EXPECT_EQ(3, base->evaluate());
-  EXPECT_EQ("100.000000-a", base->stringify());
+  EXPECT_EQ(true ,isdigit(base->evaluate()));
+  EXPECT_EQ("5.000000+50.000000", base->stringify());
   ASSERT_NE(base, nullptr);
 }
 TEST(Parse, Operators){

@@ -83,8 +83,7 @@ public:
 			}
 		}
 	        return combination; 
-	}
-
+       	}
 };
 
 
